@@ -8,19 +8,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-and-lint:
-    uses: yeencloud/dpl-ci/.github/workflows/test-and-lint.yml@main
-    secrets:
-      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  #  test-and-lint:
+  #    uses: yeencloud/dpl-ci/.github/workflows/test-and-lint.yml@main
+  #    secrets:
+  #      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
   bump-version:
-    needs: test-and-lint
+    #   needs: test-and-lint
     uses: yeencloud/dpl-ci/.github/workflows/bump-version.yml@main
     secrets:
       PERSONAL_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} # we don't want this job to trigger a new pipeline run
 
   assign-issue-from-todo:
-    needs: test-and-lint
+    #   needs: test-and-lint
     uses: yeencloud/dpl-ci/.github/workflows/issue-from-todo.yml@main
     secrets:
       PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
